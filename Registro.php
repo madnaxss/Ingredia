@@ -12,10 +12,10 @@
         <input type="email" id="email" name="email" required><br><br>
 
         <label for="password">Contraseña:</label><br>
-        <input type="password" id="password" name="password" required><br><br>
+        <input type="password" name="password" required><br><br>
 
         <label for="confirm_password">Confirmar Contraseña:</label><br>
-        <input type="password" id="confirm_password" name="confirm_password" required><br><br>
+        <input type="password" name="confirm_password" required><br><br>
 
         <input type="submit" name="registrarse" value="Registrarse">
     </form>
