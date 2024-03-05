@@ -7,28 +7,27 @@ if (!isset($_SESSION['usuario_id'])) {
     exit();
 }
 
-$id = $_SESSION['usuario_id'];
-
-$sql_ingredientes_disponibles = "SELECT i.ID, i.NOMBRE, i.FOTO 
+$id_usuario = $_SESSION['usuario_id'];
+$sql_ingredientes_disponibles = "SELECT i.ID_INGREDIENTE, i.NOMBRE, i.FOTO 
                                  FROM Ingredientes i
                                  WHERE NOT EXISTS (
                                      SELECT 1 
                                      FROM Ingredientes_Seleccionados isel 
-                                     WHERE isel.ID_INGREDIENTE = i.ID
-                                     AND isel.ID_USUARIO = $id
+                                     WHERE isel.ID_INGREDIENTE = i.ID_INGREDIENTE
+                                     AND isel.ID_USUARIO = $id_usuario
                                  )";
 $resultado_ingredientes_disponibles = mysqli_query($connexio, $sql_ingredientes_disponibles);
 
-$sql_ingredientes_seleccionados = "SELECT i.ID, i.NOMBRE, i.FOTO
+$sql_ingredientes_seleccionados = "SELECT i.ID_INGREDIENTE, i.NOMBRE, i.FOTO
                                    FROM Ingredientes i
-                                   INNER JOIN Ingredientes_Seleccionados isel ON i.ID = isel.ID_INGREDIENTE
-                                   WHERE isel.ID_USUARIO = $id";
+                                   INNER JOIN Ingredientes_Seleccionados isel ON i.ID_INGREDIENTE = isel.ID_INGREDIENTE
+                                   WHERE isel.ID_USUARIO = $id_usuario";
 $resultado_ingredientes_seleccionados = mysqli_query($connexio, $sql_ingredientes_seleccionados);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["agregar_ingrediente_seleccionado"])) {
     $id_ingrediente = $_POST["id_ingrediente"];
 
-    $sql_insertar_ingrediente = "INSERT INTO Ingredientes_Seleccionados (ID_USUARIO, ID_INGREDIENTE) VALUES ($id, $id_ingrediente)";
+    $sql_insertar_ingrediente = "INSERT INTO Ingredientes_Seleccionados (ID_USUARIO, ID_INGREDIENTE) VALUES ($id_usuario, $id_ingrediente)";
     
     if (mysqli_query($connexio, $sql_insertar_ingrediente)) {
         header("Location: BuscadorDeRecetas.php"); 
@@ -41,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["agregar_ingrediente_se
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["eliminar_ingrediente_seleccionado"])) {
     $id_ingrediente_eliminar = $_POST["id_ingrediente_eliminar"];
 
-    $sql_eliminar_ingrediente = "DELETE FROM Ingredientes_Seleccionados WHERE ID_USUARIO = $id AND ID_INGREDIENTE = $id_ingrediente_eliminar";
+    $sql_eliminar_ingrediente = "DELETE FROM Ingredientes_Seleccionados WHERE ID_USUARIO = $id_usuario AND ID_INGREDIENTE = $id_ingrediente_eliminar";
     
     if (mysqli_query($connexio, $sql_eliminar_ingrediente)) {
         header("Location: BuscadorDeRecetas.php"); 
@@ -51,16 +50,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["eliminar_ingrediente_s
     }
 }
 
-$sql_recetas_con_ingredientes_seleccionados = "SELECT r.ID, r.NOMBRE, r.DESCRIPCION
+$sql_recetas_con_ingredientes_seleccionados = "SELECT r.ID_RECETA, r.NOMBRE, r.DESCRIPCION
                                                FROM Recetas r
-                                               INNER JOIN Recetas_Ingredientes ri ON r.ID = ri.ID_RECETA
+                                               INNER JOIN Recetas_Ingredientes ri ON r.ID_RECETA = ri.ID_RECETA
                                                INNER JOIN Ingredientes_Seleccionados isel ON ri.ID_INGREDIENTE = isel.ID_INGREDIENTE
-                                               WHERE isel.ID_USUARIO = $id
-                                               GROUP BY r.ID
+                                               WHERE isel.ID_USUARIO = $id_usuario
+                                               GROUP BY r.ID_RECETA
                                                HAVING COUNT(*) = (
                                                    SELECT COUNT(*)
                                                    FROM Ingredientes_Seleccionados isel
-                                                   WHERE isel.ID_USUARIO = $id
+                                                   WHERE isel.ID_USUARIO = $id_usuario
                                                )";
 $resultado_recetas_con_ingredientes_seleccionados = mysqli_query($connexio, $sql_recetas_con_ingredientes_seleccionados);
 ?>
@@ -82,7 +81,7 @@ $resultado_recetas_con_ingredientes_seleccionados = mysqli_query($connexio, $sql
             while ($fila = mysqli_fetch_assoc($resultado_ingredientes_disponibles)) {
                 echo "<li><img src='data:image/jpeg;base64," . base64_encode($fila['FOTO']) . "' alt='" . $fila['NOMBRE'] . "'><br>" . $fila['NOMBRE'] . " 
                       <form method='post'>
-                        <input type='hidden' name='id_ingrediente' value='" . $fila['ID'] . "'>
+                        <input type='hidden' name='id_ingrediente' value='" . $fila['ID_INGREDIENTE'] . "'>
                         <button type='submit' name='agregar_ingrediente_seleccionado'>Añadir</button>
                       </form>
                       </li>";
@@ -100,7 +99,7 @@ $resultado_recetas_con_ingredientes_seleccionados = mysqli_query($connexio, $sql
             while ($fila = mysqli_fetch_assoc($resultado_ingredientes_seleccionados)) {
                 echo "<li><img src='data:image/jpeg;base64," . base64_encode($fila['FOTO']) . "' alt='" . $fila['NOMBRE'] . "'><br>" . $fila['NOMBRE'] . " 
                       <form method='post'>
-                        <input type='hidden' name='id_ingrediente_eliminar' value='" . $fila['ID'] . "'>
+                        <input type='hidden' name='id_ingrediente_eliminar' value='" . $fila['ID_INGREDIENTE'] . "'>
                         <button type='submit' name='eliminar_ingrediente_seleccionado'>Eliminar</button>
                       </form>
                       </li>";
