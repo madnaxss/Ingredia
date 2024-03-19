@@ -1,0 +1,367 @@
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&family=Mukta:wght@200;300;400;500;600;700;800&display=swap');
+body,
+html {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Menu */
+#menu {
+    height: 20vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    background-color: #42E2B8;
+}
+
+.logo {
+    width: 30px;
+
+    position: absolute;
+    top: 35px;
+    left: 55px;
+}
+
+.menu1 {
+    margin-right: 400px;
+}
+
+.menu1 ul {
+    list-style: none;
+    text-decoration: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 30px;
+}
+
+.menu1 ul li {
+    font-family: 'M PLUS Rounded 1c';
+    font-size: 0.9em;
+    font-weight: 900;
+    color: white;
+}
+
+
+/* Footer */
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+
+    background-color: #093EA8;
+}
+
+hr {
+    padding: 0px 550px;
+}
+
+.divArribaFooter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 1000px;
+
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.divArribaFooter img {
+    width: 30px;
+}
+
+.btSuba {
+    border: 0px solid;
+    border-radius: 25px;
+
+    padding: 5px 10px;
+
+    background-color: #42E2B8;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btSuba button {
+    background-color: #42E2B8;
+
+    border: 0px;
+
+    font-family: 'M PLUS Rounded 1c';
+}
+
+.divMedioFooter {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    gap: 190px;
+
+    padding: 30px 0px;
+}
+
+.divMedioFooter h4 {
+    font-family: 'M PLUS Rounded 1c';
+    color: white;
+}
+
+.divMedioFooter p {
+    font-family: 'M PLUS Rounded 1c';
+    font-size: 0.8em;
+    color: white;
+}
+
+.divAbajoFooter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px 0px;
+}
+
+.divAbajoFooter p {
+    font-family: 'M PLUS Rounded 1c';
+    font-size: 0.7em;
+    color: white;
+}
+
+
+/* Portada */
+#portada {
+    height: 100vh;
+
+    background-image: url(./img/portada.jpg);
+    background-size: cover;
+}
+
+.textPortada {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    height: 100vh;
+}
+
+.textPortada h1 {
+    font-family: 'M PLUS Rounded 1c';
+    font-weight: 900;
+    font-size: 3em;
+    color: white;
+}
+
+.textPortada button {
+    font-family: 'M PLUS Rounded 1c';
+    font-size: 0.8em;
+    font-weight: 400;
+    color: white;
+
+    padding: 10px 25px;
+
+    border: 0px solid;
+    border-radius: 50px;
+
+    background-color: #2D82B7;
+}
+
+/* Inicio Sesion */
+#inicioSesion {
+    height: 100vh;
+
+    background-image: url(./img/portadaInicoSession.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.divGeneralInicioSesion {
+    background-color: white;
+
+    padding: 100px;
+
+    border: 0px solid;
+    border-radius: 10px;
+
+    width: 500px;
+    height: 400px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.divGeneralInicioSesion h2 {
+    font-family: 'M PLUS Rounded 1c';
+    font-size: 2em;
+    font-weight: 1500;
+}
+
+.divGeneralInicioSesion form {
+    font-family: 'M PLUS Rounded 1c';
+}
+
+.divGeneralInicioSesion form input {
+    border: 0px;
+    border-bottom: 1px solid;
+
+    font-family: 'M PLUS Rounded 1c';
+
+    padding-right: 300px;
+}
+
+.divGeneralInicioSesion form #bt {
+    border: 0px;
+
+    background-color: white;
+
+    position: relative;
+    left: -36px;
+
+}
+
+.notienescuentaHasolvidado {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 450px;
+    height: 50px;
+}
+
+p {
+    font-family: 'M PLUS Rounded 1c';
+    font-size: 0.8em;
+    font-weight: 300; 
+}
+
+.notienescuentaHasolvidado span {
+    color: rgb(85, 85, 236);
+}
+
+/* About Us */
+#aboutUsPortada {
+    height: 100vh;
+}
+
+.titolAboutUs h1 {
+    font-family: 'M PLUS Rounded 1c';
+    font-weight: bold;
+    font-size: 2.5em;
+
+    padding-left: 150px;
+}
+
+.titolAboutUs span {
+    color: #42E2B8;
+}
+
+.textAboutUs {
+    width: 516px;
+    height: 501px;
+
+    position: absolute;
+    z-index: 2;
+
+    left: 250px;
+    top: 1050px;
+
+    background-color: #FAF3F0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 0px solid;
+    border-radius: 15px;
+
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+.textAboutUs p {
+    font-family: 'M PLUS Rounded 1c';
+    text-align: justify;
+
+    padding: 50px 100px;
+}
+
+.fotoAboutUs {
+    position: absolute;
+    z-index: 1;
+
+    right: 250px;
+}
+
+.fotoAboutUs img {
+    width: 577px;
+    height: 507px;
+
+    border: 0px solid;
+    border-radius: 15px;
+
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+/* Recetas Destacadas */
+#recetasDestacadas {
+    background-color: #FAF3F0;
+
+    padding-bottom: 100px;
+}
+
+#recetasDestacadas h1 {
+    font-family: 'M PLUS Rounded 1c';
+    text-align: center;
+
+    padding-bottom: 100px;
+    padding-top: 100px;
+}
+
+#recetasDestacadas span {
+    color: #2D82B7;
+}
+
+.divGeneralRecetasDestacadas {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 250px;
+}
+
+.dosRecetasDestacadas h3 {
+    font-family: 'M PLUS Rounded 1c';
+}
+
+.dosRecetasDestacadas i {
+    width: 20px;
+}
+
+.dosRecetasDestacadas i:hover {
+    color: #F1CA06;
+}
+
+.dosRecetasDestacadas img  {
+    width: 400px;
+    height: 350px;
+}
+
+.dosRecetasDestacadas p {
+    font-family: 'M PLUS Rounded 1c';
+    color: rgb(189, 186, 186);
+}
